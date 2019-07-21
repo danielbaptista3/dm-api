@@ -86,4 +86,28 @@ companyRouter.delete('/:id' , function(req,res){
     })
 });
 
+//LOGIN
+companyRouter.post('/login', function(req, res){
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const company = CompanyController.login(email, password)
+  .then((company) => {
+    if(company == null){
+      res.send('Accès refusé').end();
+      return;
+    }
+
+    jwt.sign({company}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
+      res.json({
+        token
+      });
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).end();
+  })
+});
+
 module.exports = companyRouter;

@@ -11,7 +11,7 @@ CompanyController.addCompany = function(name, SIREN, city, street, number, zipCo
     city: city,
     street: street,
     number: number,
-    zipode: zipCode,
+    zipCode: zipCode,
     email: email,
     password: password
   });
@@ -113,6 +113,24 @@ CompanyController.deleteCompanyById = function(idCompany){
     .catch((err) => {
       console.error(err);
     });
+};
+
+//LOGIN
+CompanyController.login = function(email, password){
+  return Company.find({
+    where : {
+      email : email,
+      password : password
+    }
+  })
+  .then((company)=>{
+    if(company){
+      return company;
+    }
+    else{
+      return null;
+    }
+  });
 };
 
 module.exports = CompanyController;
