@@ -52,7 +52,7 @@ advertisementRouter.get('/:idCompany/:idAdvertisement' , function(req,res){
 });
 
 //UPDATE
-advertisementRouter.put('/:idCompany/:idAvertisement' , function(req,res){
+advertisementRouter.put('/:idCompany/:idAdvertisement' , function(req,res){
     
     const idAdvertisement = req.params.idAdvertisement;
     const availabilityDate = req.body.availabilityDate;
