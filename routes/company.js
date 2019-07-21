@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('../controllers');
 const companyController = controllers.CompanyController;
-
+const jwt = require('jsonwebtoken');
 
 const companyRouter = express.Router();
 companyRouter.use(bodyParser.json());
@@ -92,7 +92,7 @@ companyRouter.post('/login', function(req, res){
   const email = req.body.email;
   const password = req.body.password;
 
-  const company = CompanyController.login(email, password)
+  const company = companyController.login(email, password)
   .then((company) => {
     if(company == null){
       res.send('Accès refusé').end();
