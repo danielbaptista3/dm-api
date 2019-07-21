@@ -2,6 +2,6 @@ module.exports = {
 
   UserController : require('./user'),
   RemovalController : require('./removal'),
-  CompanyController : require('./comapany'),
+  CompanyController : require('./company'),
   AdvertisementController : require('./advertisement')
 };
