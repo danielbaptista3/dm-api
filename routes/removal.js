@@ -6,6 +6,7 @@ const removalController = controllers.RemovalController;
 
 const removalRouter = express.Router();
 removalRouter.use(bodyParser.json());
+removalRouter.use(bodyParser.urlencoded({ extended: true }));
 
 //ADD
 removalRouter.post('/', function(req, res) {

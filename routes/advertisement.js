@@ -6,6 +6,7 @@ const advertisementController = controllers.AdvertisementController;
 
 const advertisementRouter = express.Router();
 advertisementRouter.use(bodyParser.json());
+advertisementRouter.use(bodyParser.urlencoded({ extended: true }));
 
 //ADD
 advertisementRouter.post('/:idCompany', function(req, res) {

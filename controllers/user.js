@@ -32,37 +32,39 @@ UserController.deleteUser = function(idUser){
 
 //UPDATE
 UserController.updateUser = function(idUser, newFirstName, newLastName, newZipCode, newCity, newEmail, newPassword) {
-  const user = User.find({
-    where:{
-      idUser: idUser
+
+  return User.findById(idUser)
+  .then((user)=>{
+
+    if(user === undefined){
+      return;
+  }
+
+    if(newFirstName === undefined) {
+      newFirstName = advertisement.firstName;
     }
-  });
 
-  if(newFirstName === undefined) {
-    newFirstName = advertisement.firstName;
-}
+    if(newLastName === undefined) {
+        newLastName = advertisement.lastName;
+    }
 
-if(newLastName === undefined) {
-    newLastName = advertisement.lastName;
-}
+    if(newZipCode === undefined) {
+        newZipCode = advertisement.zipCode;
+    }
 
-if(newZipCode === undefined) {
-    newZipCode = advertisement.zipCode;
-}
+    if(newCity === undefined) {
+        newCity = advertisement.city;
+    }
 
-if(newCity === undefined) {
-    newCity = advertisement.city;
-}
+    if(newPassword === undefined) {
+        newPassword = advertisement.password;
+    }
 
-if(newPassword === undefined) {
-    newPassword = advertisement.password;
-}
+    if(newEmail === undefined) {
+        newEmail = advertisement.email;
+    }
 
-if(newEmail === undefined) {
-    newEmail = advertisement.email;
-}
-
-  user.updateAttributes({
+   return user.updateAttributes({
     firstName: newFirstName,
     lastName: newLastName,
     zipCode: newZipCode,
@@ -70,8 +72,7 @@ if(newEmail === undefined) {
     email: newEmail,
     password: newPassword
   });
-
-  return user;
+});
 };
 
 //GET BY ID

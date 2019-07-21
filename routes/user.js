@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const userRouter = express.Router();
 userRouter.use(bodyParser.json());
+userRouter.use(bodyParser.urlencoded({ extended: true }));
 
 //ADD
 userRouter.post('/', function(req, res) {

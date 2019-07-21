@@ -44,13 +44,11 @@ CompanyController.getCompanyById = function(idCompany){
 
 //UPDATE
 CompanyController.updateCompany = function(idCompany, newName, newSIREN, newCity, newStreet, newNumber, newZipCode, newEmail, newPassword) {
-    const company = Company.find({
-        where:{
-            idCompany: idCompany
-        }
-    });
-    
-    if(company === undefined){
+  
+  return Company.findById(idCompany)
+  .then((company)=>{
+
+      if(company === undefined){
         return;
     }
     
@@ -86,18 +84,17 @@ CompanyController.updateCompany = function(idCompany, newName, newSIREN, newCity
       newPassword = company.password;
     }
 
-    company.updateAttributes({
-        name: newName,
-        SIREN: newSIREN,
-        city: newCity,
-        street: newStreet,
-        number: newNumber,
-        zipCode: newZipCode,
-        email: newEmail,
-        password: newPassword
+    return company.updateAttributes({
+      name: newName,
+      SIREN: newSIREN,
+      city: newCity,
+      street: newStreet,
+      number: newNumber,
+      zipCode: newZipCode,
+      email: newEmail,
+      password: newPassword
     });
-    
-    return company;
+  });
 };
 
 //DELETE

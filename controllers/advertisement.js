@@ -47,12 +47,9 @@ AdvertisementController.getAdvertisementById = function(idCompany, idAdvertiseme
 
 //UPDATE
 AdvertisementController.updateAdvertisement = function(idAdvertisement, newAvailabilityDate, newDescription, newLarge, newMedium, newSmall, idCompany) {
-    const advertisement = Advertisement.find({
-        where:{
-            idAdvertisement: idAdvertisement,
-            idCompany: idCompany
-        }
-    });
+  return Advertisement.findById(idAdvertisement)
+  .then((advertisement)=>{
+
     
     if(advertisement === undefined){
         return;
@@ -78,15 +75,14 @@ AdvertisementController.updateAdvertisement = function(idAdvertisement, newAvail
         newSmall = advertisement.small;
     }
 
-    advertisement.updateAttributes({
+    return advertisement.updateAttributes({
         availabilityDate: newAvailabilityDate,
         description: newDescription,
         large: newLarge,
         medium: newMedium,
         small: newSmall
     });
-    
-    return advertisement;
+  });
 };
 
 //DELETE

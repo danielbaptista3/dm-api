@@ -40,11 +40,9 @@ RemovalController.getRemovalById = function(idRemoval){
 
 //UPDATE
 RemovalController.updateRemoval = function(idRemoval, newDate, newAddress, newArrivalAddress, newDescription) {
-    const removal = Removal.find({
-        where:{
-            idRemoval: idRemoval
-        }
-    });
+  return Removal.findById(idRemoval)
+  .then((removal)=>{
+
     
     if(removal === undefined){
         return;
@@ -66,14 +64,13 @@ RemovalController.updateRemoval = function(idRemoval, newDate, newAddress, newAr
       newDescription = removal.description;
   }
     
-    removal.updateAttributes({
+    return removal.updateAttributes({
         date: newDate,
         address: newAddress,
         arrivalAddress: newArrivalAddress,
         description: newDescription
+      });
     });
-    
-    return removal;
 };
 
 //DELETE

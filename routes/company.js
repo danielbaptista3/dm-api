@@ -6,6 +6,7 @@ const companyController = controllers.CompanyController;
 
 const companyRouter = express.Router();
 companyRouter.use(bodyParser.json());
+companyRouter.use(bodyParser.urlencoded({ extended: true }));
 
 //ADD
 companyRouter.post('/', function(req, res) {
