@@ -11,9 +11,9 @@ advertisementRouter.use(bodyParser.json());
 advertisementRouter.post('/:idCompany', function(req, res) {
    const availabilityDate = req.body.availabilityDate;
    const description = req.body.description;
-   const large = req.body.lastName;
-   const medium = req.body.zipcode;
-   const small = req.body.city;
+   const large = req.body.large;
+   const medium = req.body.medium;
+   const small = req.body.small;
    const idCompany = req.params.idCompany;
 
   advertisementController.addAdvertisement(availabilityDate, description, large, medium, small, idCompany)
@@ -56,9 +56,9 @@ advertisementRouter.put('/:idCompany/:idAvertisement' , function(req,res){
     const idAdvertisement = req.params.idAdvertisement;
     const availabilityDate = req.body.availabilityDate;
     const description = req.body.description;
-    const large = req.body.lastName;
-    const medium = req.body.zipcode;
-    const small = req.body.city;
+    const large = req.body.large;
+    const medium = req.body.medium;
+    const small = req.body.small;
     const idCompany = req.params.idCompany;
   
     advertisementController.updateAdvertisement(idAdvertisement, availabilityDate, description, large, medium, small, idCompany)

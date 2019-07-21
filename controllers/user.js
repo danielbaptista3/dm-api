@@ -4,7 +4,7 @@ const User = ModelIndex.User;
 const UserController = function() {};
 
 //ADD
-UserController.addUser = function(firstName, lastName, zipcode, city, email, password){
+UserController.addUser = function(firstName, lastName, zipCode, city, email, password){
   return User.create({
     firstName: firstName,
     lastName: lastName,

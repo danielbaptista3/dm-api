@@ -4,14 +4,14 @@ const Company = ModelIndex.Company;
 const CompanyController = function() {};
 
 //ADD
-CompanyController.addCompany = function(name, SIREN, city, street, number, zipcode, email, password){
+CompanyController.addCompany = function(name, SIREN, city, street, number, zipCode, email, password){
   return Company.create({
     name: name,
     SIREN: SIREN,
     city: city,
     street: street,
     number: number,
-    zipcode: zipcode,
+    zipode: zipCode,
     email: email,
     password: password
   });
