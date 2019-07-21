@@ -29,17 +29,13 @@ AdvertisementController.getAllAdvertisement = function(idCompany){
 
 //GET ID
 AdvertisementController.getAdvertisementById = function(idCompany, idAdvertisement){
-  const advertisement =  Advertisement.find({
+  return Advertisement.findOne({
     where: {
       idCompany: idCompany,
       idAdvertisement: idAdvertisement
     }
-  })  
-  .then((advertisement) => {
-    console.log('Annonce trouvée');
-    return advertisement;
   })
-  .catch((error) => {
+  .catch((err) => {
     console.error(err);
   });
 };

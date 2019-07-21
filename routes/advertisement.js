@@ -40,7 +40,7 @@ advertisementRouter.get('/:idCompany', function(req,res){
 });
 
 //GET ID
-advertisementRouter.get('/:idCompany/:idAvertisement' , function(req,res){
+advertisementRouter.get('/:idCompany/:idAdvertisement' , function(req,res){
   advertisementController.getAdvertisementById(req.params.idCompany, req.params.idAdvertisement)
   .then((advertisement) => {
     res.status(201).json(advertisement);
