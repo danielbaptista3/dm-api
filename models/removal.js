@@ -32,5 +32,12 @@ const Removal = sequelize.define('Removal', {
         freezeTableName: true
     });
 
+    Removal.associate = (models) => {
+        Removal.belongsTo(models.User, {
+          foreignKey: 'idUser',
+          onDelete: 'CASCADE',
+        });
+      };
+
     return Removal;
 };

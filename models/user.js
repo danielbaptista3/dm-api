@@ -40,5 +40,14 @@ const User = sequelize.define('User', {
         freezeTableName: true
     });
 
+    User.associate = (models) => {
+        User.hasMany(models.Removal, {
+          foreignKey: 'idUser',
+          as: 'removals',
+        });
+      };
+
+
+      
     return User;
 };

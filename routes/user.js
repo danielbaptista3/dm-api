@@ -38,12 +38,12 @@ userRouter.post('/login', function(req, res){
       res.send('Accès refusé').end();
       return;
     }
-
-    jwt.sign({user}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
+    res.status(200).json(user);
+/*    jwt.sign({user}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
       res.json({
         token
       });
-    });
+    });*/
   })
   .catch((err) => {
     console.error(err);
