@@ -95,10 +95,9 @@ companyRouter.post('/login', function(req, res){
   const company = companyController.login(email, password)
   .then((company) => {
     if(company == null){
-      res.send('Accès refusé').end();
+      res.send("0").end();
       return;
     }
-
     jwt.sign({company}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
       res.json({
         token
