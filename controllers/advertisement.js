@@ -82,7 +82,7 @@ AdvertisementController.updateAdvertisement = function(idAdvertisement, newAvail
 };
 
 //DELETE
-AdvertisementController.deleteAdvertisementById = function(idAdvertisement){
+AdvertisementController.deleteAdvertisementById = function(idCompany, idAdvertisement){
   return Advertisement.destroy({
     where:{
       idCompany: idCompany,
