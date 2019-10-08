@@ -69,7 +69,7 @@ advertisementRouter.put('/:idCompany/:idAdvertisement' , function(req,res){
     .catch((err) => {
       console.error(err);
       res.status(500).end();
-    })
+    });
 });
 
 //DELETE

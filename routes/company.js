@@ -100,7 +100,8 @@ companyRouter.post('/login', function(req, res){
     }
     jwt.sign({company}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
       res.json({
-        token
+        token,
+        company
       });
     });
   })
