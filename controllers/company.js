@@ -85,8 +85,7 @@ CompanyController.updateCompany = function(idCompany, newName, newSIREN, newCity
     }
     else
     {
-        
-        PasswordHistoryController.addCompanyPasswordHistory(new Date(), company.password, null, idCompany);
+        PasswordHistoryController.addCompanyPasswordHistory(new Date(), company.password, company.idCompany);
     }
 
     return company.updateAttributes({
