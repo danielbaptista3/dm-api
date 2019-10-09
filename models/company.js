@@ -56,11 +56,14 @@ const Company = sequelize.define('Company', {
             }
         }
     });
-
     Company.associate = (models) => {
         Company.hasMany(models.Advertisement, {
           foreignKey: 'idCompany',
           as: 'advertisements',
+        });
+        Company.hasMany(models.PasswordHistory, {
+          foreignKey: 'idCompany',
+          as: 'passwordHistorys',
         });
       };
 

@@ -1,6 +1,6 @@
 const ModelIndex = require('../models');
 const Company = ModelIndex.Company;
-
+const PasswordHistoryController = require('./passwordHistory');
 const CompanyController = function() {};
 
 //ADD
@@ -85,8 +85,8 @@ CompanyController.updateCompany = function(idCompany, newName, newSIREN, newCity
     }
     else
     {
-        const PasswordHistoryController = require('./passwordHistory');
-        PasswordHistoryController.addPasswordHistory(new Date(), company.password, null, idCompany);
+        
+        PasswordHistoryController.addCompanyPasswordHistory(new Date(), company.password, null, idCompany);
     }
 
     return company.updateAttributes({

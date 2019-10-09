@@ -38,7 +38,7 @@ PasswordHistoryController.getLastPasswordsByIdUser = function(idUser){
 
 //GET LAST BY ID COMPANY
 PasswordHistoryController.getLastPasswordsByIdCompany = function(idCompany){
-  return PasswordHistory.findAll({limit: 4 })({
+  return PasswordHistory.findAll({limit: 4,
     where: {
       idCompany: idCompany
     },
