@@ -43,7 +43,7 @@ advertisementRouter.get('/:idCompany', function(req,res){
 advertisementRouter.get('/:idCompany/:idAdvertisement' , function(req,res){
   advertisementController.getAdvertisementById(req.params.idCompany, req.params.idAdvertisement)
   .then((advertisement) => {
-    res.status(201).json(advertisement);
+    res.status(200).json(advertisement);
   })
   .catch((err) => {
     console.error(err);
@@ -69,7 +69,7 @@ advertisementRouter.put('/:idCompany/:idAdvertisement' , function(req,res){
     .catch((err) => {
       console.error(err);
       res.status(500).end();
-    });
+    })
 });
 
 //DELETE

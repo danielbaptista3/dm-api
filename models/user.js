@@ -37,13 +37,26 @@ const User = sequelize.define('User', {
     {
         paranoid: false,
         underscored: true,
-        freezeTableName: true
+        freezeTableName: true,
+
+        instanceMethods: {
+            generateHash(password) {
+                return bcrypt.hash(password, bcrypt.genSaltSync(8));
+            },
+            validPassword(password) {
+                return bcrypt.compare(password, this.password);
+            }
+        }
     });
 
     User.associate = (models) => {
         User.hasMany(models.Removal, {
           foreignKey: 'idUser',
           as: 'removals',
+        });
+        User.hasMany(models.Comment, {
+          foreignKey: 'idUser',
+          as: 'comments',
         });
       };
 

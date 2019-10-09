@@ -43,12 +43,7 @@ AdvertisementController.getAdvertisementById = function(idCompany, idAdvertiseme
 
 //UPDATE
 AdvertisementController.updateAdvertisement = function(idAdvertisement, newAvailabilityDate, newDescription, newLarge, newMedium, newSmall, idCompany) {
-  return Advertisement.findOne({
-    where: {
-      idCompany: idCompany,
-      idAdvertisement: idAdvertisement
-    }
-  })
+  return Advertisement.findById(idAdvertisement)
   .then((advertisement)=>{
 
     

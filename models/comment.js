@@ -2,9 +2,9 @@
 
 module.exports = function(sequelize , DataTypes){
 
-const Removal = sequelize.define('Removal', {
+const Comment = sequelize.define('Comment', {
 
-        idRemoval: {
+        idComment: {
             type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true
@@ -13,18 +13,18 @@ const Removal = sequelize.define('Removal', {
             type: DataTypes.DATE,
             allowNull: false
         },
-        address: {
+        subject: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        arrivalAddress: {
+        message: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
+        edited: {
+             type: DataTypes.BOOLEAN,
+             allowNull: false
+         }
     },
     {
         paranoid: false,
@@ -32,16 +32,15 @@ const Removal = sequelize.define('Removal', {
         freezeTableName: true
     });
 
-    Removal.associate = (models) => {
-        Removal.belongsTo(models.User, {
+    Comment.associate = (models) => {
+        Comment.belongsTo(models.User, {
           foreignKey: 'idUser',
           onDelete: 'CASCADE',
         });
-        Removal.hasMany(models.Comment, {
+        Comment.belongsTo(models.Removal, {
           foreignKey: 'idRemoval',
-          as: 'comments',
-        });
-      };
+          onDelete: 'CASCADE',
+        });      };
 
-    return Removal;
+    return Comment;
 };

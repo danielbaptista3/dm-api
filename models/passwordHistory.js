@@ -2,9 +2,9 @@
 
 module.exports = function(sequelize , DataTypes){
 
-const Removal = sequelize.define('Removal', {
+const PasswordHistory = sequelize.define('PasswordHistory', {
 
-        idRemoval: {
+        idPasswordHistory: {
             type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true
@@ -13,15 +13,7 @@ const Removal = sequelize.define('Removal', {
             type: DataTypes.DATE,
             allowNull: false
         },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        arrivalAddress: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        description: {
+        oldPassword: {
             type: DataTypes.STRING,
             allowNull: false
         }
@@ -32,16 +24,16 @@ const Removal = sequelize.define('Removal', {
         freezeTableName: true
     });
 
-    Removal.associate = (models) => {
-        Removal.belongsTo(models.User, {
+    PasswordHistory.associate = (models) => {
+        PasswordHistory.belongsTo(models.User, {
           foreignKey: 'idUser',
           onDelete: 'CASCADE',
         });
-        Removal.hasMany(models.Comment, {
-          foreignKey: 'idRemoval',
-          as: 'comments',
+        PasswordHistory.belongsTo(models.Company, {
+          foreignKey: 'idCompany',
+          onDelete: 'CASCADE',
         });
-      };
+     };
 
-    return Removal;
+    return PasswordHistory;
 };

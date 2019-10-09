@@ -45,7 +45,16 @@ const Company = sequelize.define('Company', {
     {
         paranoid: false,
         underscored: true,
-        freezeTableName: true
+        freezeTableName: true,
+
+        instanceMethods: {
+            generateHash(password) {
+                return bcrypt.hash(password, bcrypt.genSaltSync(8));
+            },
+            validPassword(password) {
+                return bcrypt.compare(password, this.password);
+            }
+        }
     });
 
     Company.associate = (models) => {

@@ -41,27 +41,32 @@ UserController.updateUser = function(idUser, newFirstName, newLastName, newZipCo
   }
 
     if(newFirstName === undefined) {
-      newFirstName = advertisement.firstName;
+      newFirstName = user.firstName;
     }
 
     if(newLastName === undefined) {
-        newLastName = advertisement.lastName;
+        newLastName = user.lastName;
     }
 
     if(newZipCode === undefined) {
-        newZipCode = advertisement.zipCode;
+        newZipCode = user.zipCode;
     }
 
     if(newCity === undefined) {
-        newCity = advertisement.city;
+        newCity = user.city;
     }
 
     if(newPassword === undefined) {
-        newPassword = advertisement.password;
+        newPassword = user.password;
+    }
+    else
+    {
+        const PasswordHistoryController = require('./passwordHistory');
+        PasswordHistoryController.addPasswordHistory(new Date(), user.password, idUser, null);
     }
 
     if(newEmail === undefined) {
-        newEmail = advertisement.email;
+        newEmail = user.email;
     }
 
    return user.updateAttributes({

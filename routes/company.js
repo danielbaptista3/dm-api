@@ -45,7 +45,7 @@ companyRouter.get('/', function(req,res){
 companyRouter.get('/:id' , function(req,res){
   companyController.getCompanyById(req.params.id)
   .then((company) => {
-    res.status(201).json(company);
+    res.status(200).json(company);
   })
   .catch((err) => {
     console.error(err);

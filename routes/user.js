@@ -38,12 +38,11 @@ userRouter.post('/login', function(req, res){
       res.send('Accès refusé').end();
       return;
     }
-    res.status(200).json(user);
-/*    jwt.sign({user}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
-      res.json({
+    jwt.sign({user}, 'secretkey', {expiresIn: '1h'}, (err, token) =>{
+      res.status(202).json({
         token
       });
-    });*/
+    });
   })
   .catch((err) => {
     console.error(err);
@@ -55,7 +54,7 @@ userRouter.post('/login', function(req, res){
 userRouter.get('/allUser', function(req,res){
   UserController.getAllUser()
   .then((users) => {
-    res.status(201).json(users);
+    res.status(200).json(users);
   })
   .catch((err) => {
     console.error(err);
@@ -67,7 +66,7 @@ userRouter.get('/allUser', function(req,res){
 userRouter.get('/:id' , function(req,res){
   UserController.getUserById(req.params.id)
   .then((user) => {
-    res.status(201).json(user);
+    res.status(200).json(user);
   })
   .catch((err) => {
     console.error(err);
@@ -92,7 +91,7 @@ userRouter.delete('/:idUser' , function(req,res){
       }
       UserController.deleteUser(idUser)
         .then((user) => {
-          res.status(201).json(user);
+          res.status(204).json(user);
         })
         .catch((err) => {
           console.error(err);
@@ -109,7 +108,7 @@ userRouter.put('/updateUser' , function(req,res){
     res.status(403).end('Accès refusé');
       return;
   }
-  else{
+  else {
     const idUser = req.body.idUser;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
