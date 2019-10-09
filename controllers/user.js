@@ -1,5 +1,6 @@
 const ModelIndex = require('../models');
 const User = ModelIndex.User;
+ const PasswordHistoryController = require('./passwordHistory');
 
 const UserController = function() {};
 
@@ -61,8 +62,8 @@ UserController.updateUser = function(idUser, newFirstName, newLastName, newZipCo
     }
     else
     {
-        const PasswordHistoryController = require('./passwordHistory');
-        PasswordHistoryController.addPasswordHistory(new Date(), user.password, idUser, null);
+       
+        PasswordHistoryController.addUserPasswordHistory(new Date(), user.password, idUser);
     }
 
     if(newEmail === undefined) {
