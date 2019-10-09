@@ -86,7 +86,7 @@ CompanyController.updateCompany = function(idCompany, newName, newSIREN, newCity
     else
     {
         const PasswordHistoryController = require('./passwordHistory');
-        PasswordHistoryController.addPasswordHistory(new Date(), user.password, null, idCompany);
+        PasswordHistoryController.addPasswordHistory(new Date(), company.password, null, idCompany);
     }
 
     return company.updateAttributes({
